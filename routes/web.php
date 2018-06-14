@@ -23,3 +23,5 @@ Route::get('/about','StaticPagesController@about')->name('about');
 
 //加不加 / 都可以
 Route::get('/signup', 'UsersController@create')->name('signup');
+
+Route::resource('users', 'UsersController');
