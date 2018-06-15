@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
         $user->email = 'hzs@joycore.com';
         $user->password = bcrypt('2012shijie');
         $user->is_admin = true;
+        $user->activated = true;
         $user->save();
     }
 }
