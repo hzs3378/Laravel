@@ -54,6 +54,22 @@ return [
             'engine' => null,
         ],
 
+        'mysql_or' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_CENTER', '10.10.8.18'),
+            'port' => env('DB_PORT_CENTER', '3306'),
+            'database' => env('DB_DATABASE_CENTER', 'table'),
+            'username' => env('DB_USERNAME_CENTER', 'joycore'),
+            'password' => env('DB_PASSWORD_CENTER', 'joycore'),
+            'unix_socket' => env('DB_SOCKET_CENTER', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

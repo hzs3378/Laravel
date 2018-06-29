@@ -10,11 +10,16 @@ class EventServiceProvider extends ServiceProvider
     /**
      * The event listener mappings for the application.
      *
+     * 包含所有事件，注册所有的事件监听器
+     *
      * @var array
      */
     protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
+        ],
+        'App\Events\Ordershipped' => [
+            'App\Listeners\SendShipmentNotification',
         ],
     ];
 
@@ -27,6 +32,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+//        Event::listen('event.name', function ($foo, $bar) {
+//
+//        });
     }
 }

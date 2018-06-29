@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
+    | Application Name 应用名称
     |--------------------------------------------------------------------------
     |
     | This value is the name of your application. This value is used when the
@@ -17,7 +17,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Environment
+    | Application Environment 应用环境
     |--------------------------------------------------------------------------
     |
     | This value determines the "environment" your application is currently
@@ -30,7 +30,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Debug Mode
+    | Application Debug Mode  应用调试模式
     |--------------------------------------------------------------------------
     |
     | When your application is in debug mode, detailed error messages with
@@ -43,7 +43,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application URL
+    | Application URL  应用连接
     |--------------------------------------------------------------------------
     |
     | This URL is used by the console to properly generate URLs when using
@@ -56,7 +56,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Timezone
+    | Application Timezone 应用时区
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default timezone for your application, which
@@ -69,7 +69,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Locale Configuration
+    | Application Locale Configuration  应用区域配置
     |--------------------------------------------------------------------------
     |
     | The application locale determines the default locale that will be used
@@ -95,7 +95,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Encryption Key
+    | Encryption Key 加密秘钥
     |--------------------------------------------------------------------------
     |
     | This key is used by the Illuminate encrypter service and should be set
@@ -110,24 +110,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Logging Configuration
+    | Logging Configuration 记录日志配置
     |--------------------------------------------------------------------------
     |
     | Here you may configure the log settings for your application. Out of
     | the box, Laravel uses the Monolog PHP logging library. This gives
     | you a variety of powerful log handlers / formatters to utilize.
-    |
+    |                       单个       每日     系统日志   错误日志
     | Available Settings: "single", "daily", "syslog", "errorlog"
     |
     */
 
     'log' => env('APP_LOG', 'single'),
 
+//    记录大于或等于指定严重级别的所有级别的错误
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
+//    'log_max_files' => 5, // 默认只保留五天份的日志文件
 
     /*
     |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
+    | Autoloaded Service Providers 自动加载服务
     |--------------------------------------------------------------------------
     |
     | The service providers listed here will be automatically loaded on the
@@ -173,7 +176,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 

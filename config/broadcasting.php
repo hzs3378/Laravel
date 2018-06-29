@@ -4,13 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Broadcaster
+    | Default Broadcaster  默认广播
     |--------------------------------------------------------------------------
     |
     | This option controls the default broadcaster that will be used by the
     | framework when an event needs to be broadcast. You may set this to
     | any of the connections defined in the "connections" array below.
     |
+    | 广播支持的驱动器：
     | Supported: "pusher", "redis", "log", "null"
     |
     */

@@ -21,8 +21,12 @@ Route::get('/help','StaticPagesController@help')->name('help');
 
 Route::get('/about','StaticPagesController@about')->name('about');
 
+Route::get('/ord/{user}','StaticPagesController@ord')->name('ord');
+
 //加不加 / 都可以
 Route::get('/signup', 'UsersController@create')->name('signup');
+//Route::post('users/update', 'UsersController@update')->name('users.update');
+
 
 Route::resource('users', 'UsersController');
 

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Models\User;
 use Auth;
 use Mail;
+use Validator;
 
 class UsersController extends Controller
 {
@@ -31,24 +32,28 @@ class UsersController extends Controller
 
     public function create()
     {
+
         return view('users.create');
+
     }
 
-    public function show(User $user)
+    public function show(User $user,Request $request)
     {
-        try {
-            $this->authorize ('update', $user);
-            return view ('users.show', compact ('user'));
-        } catch (\Exception $e) {
-            session()->flash('danger','对不起,您无权访问该页面');
-            return redirect()->route('users.show', [Auth::user()]);
-        }
+
+        var_dump($user->name);
+//        try {
+//            $this->authorize ('update', $user);
+//            return view ('users.show', compact ('user'));
+//        } catch (\Exception $e) {
+//            session()->flash('danger','对不起,您无权访问该页面');
+//            return redirect()->route('users.show', [Auth::user()]);
+//        }
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
+            'name' => 'required|alpha_num|max:50',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6'
         ]);
@@ -103,6 +108,8 @@ class UsersController extends Controller
     {
 //        $this->authorize('update', $user);
 //        return view('users.edit', compact('user'));
+
+
         try {
             $this->authorize ('update', $user);
             return view ('users.edit', compact ('user'));
@@ -113,6 +120,38 @@ class UsersController extends Controller
     }
 
     public function update(User $user,Request $request)
+    {
+
+        $input = $request->all();
+        $valid = [
+            'name' => 'required|min:2|max:255',
+        ];
+        $messa = [
+            'name.required' => '姓名不能为空啊',
+        ];
+
+        $validator = Validator::make($input, $valid, $messa);
+
+        if ($validator->fails()) {
+            return response()->json(array(
+                'success' => false,
+                'message' => 'There are incorect values in the form!',
+                'errors' => $validator->getMessageBag()->toArray()
+            ));
+        }
+
+        $data = [];
+        $data['name'] = $request->name;
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        $user->update($data);
+
+        $ds = $user->find(1);
+        echo json_encode($ds);
+    }
+
+    public function updatea(User $user,Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:50',
@@ -146,4 +185,6 @@ class UsersController extends Controller
         session()->flash('success', '成功删除用户！');
         return back();
     }
+
+
 }

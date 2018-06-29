@@ -3,6 +3,7 @@
 <head>
     <title>@yield('title', 'Exp') - Laravel</title>
     <link rel="stylesheet" href="/css/app.css">
+    <meta name="_token" content="{{ csrf_token() }}">
 </head>
 <body>
 @include('layouts._header')
@@ -17,5 +18,7 @@
 </div>
 
 <script src="/js/app.js"></script>
+<script src="/js/jquery.min.js"></script>
+
 </body>
 </html>
